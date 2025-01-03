@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'FiraCodeNerdFontMono-Medium';
+    font-display: swap;
+    src: url('../font/FiraCodeNerdFontMono-Medium.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'FiraCodeNerdFontMono-Regular';
+    font-display: swap;
+    src: url('../font/FiraCodeNerdFontMono-Regular.ttf') format("truetype");
+}
