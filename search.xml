@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>KMP算法</title>
+      <link href="/2025/01/08/algo/KMP%E7%AE%97%E6%B3%95/"/>
+      <url>/2025/01/08/algo/KMP%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="什么是KMP算法"><a href="#什么是KMP算法" class="headerlink" title="什么是KMP算法"></a>什么是KMP算法</h2><p>KMP算法是一种字符串匹配(查找)算法，旨在快速查找<code>子串</code>在<code>主串</code>中的位置。</p><h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><p>next数组的被定义为表示子串的<code>最长相等前后缀</code>。</p><p>举个🌰:</p><p>对于字符串<code>ABACABAB</code>，其对应的next数组如下:</p><table><thead><tr><th align="center">A</th><th align="center">B</th><th align="center">A</th><th align="center">C</th><th align="center">A</th><th align="center">B</th><th align="center">A</th><th align="center">B</th></tr></thead><tbody><tr><td align="center">0</td><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">2</td></tr></tbody></table><p>当比较到以下步骤时：</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next.png" alt="关键步骤"></p><p>出现不匹配情况，但是不能直接把当前i为认为是0，而是应该回退到之前最长的结果再进行比较</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next1.png" alt="关键步骤"></p><p>因为前后两段的<code>前缀</code>是相同的，所以可以把后面的<code>B</code>拿到前面那段去，将<code>C</code>换成<code>B</code>，然后得到的结果是等价的：</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next2.png" alt="关键步骤"></p><p>此时我们可以观察当前pl位的前面的<code>最长相等前后缀</code>是多少，然后跳过该长度的前缀接着比较：</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next3.png" alt="关键步骤"></p><p>能看到前面的<code>最长相等前后缀</code>是<code>1</code>，所以将<code>pl</code>回退到开头，但跳过1个字符，也就是到了<code>B</code>处:</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next4.png" alt="关键步骤"></p><p>此时再比较发现能够匹配了，加上之前的结果，因此当前<code>pl</code>位置应当是<code>2</code>，这才是正确的结果。</p><p><img src="/./img/posts_img/algo/KMP%E7%AE%97%E6%B3%95/next5.png" alt="关键步骤"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>张祥前的《统一场论 》</title>
       <link href="/2025/01/05/anything/%E7%BB%9F%E4%B8%80%E5%9C%BA%E8%AE%BA/"/>
       <url>/2025/01/05/anything/%E7%BB%9F%E4%B8%80%E5%9C%BA%E8%AE%BA/</url>
