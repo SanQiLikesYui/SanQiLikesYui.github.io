@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>适用于Vue2的devtools安装</title>
+      <link href="/2025/02/26/record/vue-devtools-5.1.1-install/"/>
+      <url>/2025/02/26/record/vue-devtools-5.1.1-install/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载源代码"><a href="#下载源代码" class="headerlink" title="下载源代码"></a>下载源代码</h2><p><code>目前测试只有很旧的版本才能用，谷歌浏览器里的v7, v6, v5全都不能用</code><br>发布页: <a href="https://github.com/vuejs/devtools-v6/releases">https://github.com/vuejs/devtools-v6/releases</a><br>链接: <a href="https://github.com/vuejs/devtools-v6/archive/refs/tags/v5.1.1.zip">https://github.com/vuejs/devtools-v6/archive/refs/tags/v5.1.1.zip</a></p><h2 id="手动构建"><a href="#手动构建" class="headerlink" title="手动构建"></a>手动构建</h2><ol><li>解压下载好的压缩包，并进入压缩包根目录</li><li>安装yarn, 终端运行<code>npm i yarn -g</code></li><li>运行: <code>yarn install</code>来安装依赖，这可能花点时间</li><li>执行构建指令: <code>npm run build</code>, 但是大概率会报<code>ERR_OSSL_EVP_UNSUPPORTED</code>这个错误<br>原因是因为我们的nodejs版本过高，我测试时的版本是18的，没测过16，但是网上说似乎可行。无所谓，解决办法就是:在<code>package.json</code>的<code>build</code>命令中加一句<code>set NODE_OPTIONS=--openssl-legacy-provider &amp;&amp;</code>就行。</li><li>然后重新执行<code>npm run build</code>，执行完毕后将根目录下的<code>shells/chrome</code>文件夹拖到chrome浏览器中正常安装就行，记得是拓展页面。</li><li>安装后会报个小错误，因为这个插件的版本太老了，导致chrome提示你配置文件中的有些配置已经弃用了，直接点清除,无视就行。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> 浏览器 </tag>
+            
+            <tag> 插件 </tag>
+            
+            <tag> Javascript </tag>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>oh-my-posh与nushell的安装和配置</title>
       <link href="/2025/01/27/record/oh-my-posh/"/>
       <url>/2025/01/27/record/oh-my-posh/</url>
