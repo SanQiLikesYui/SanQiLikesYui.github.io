@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>Ubuntu下安装和配置zsh+ohmyzsh</title>
+      <link href="/2025/03/19/record/Ubuntu+zsh+oh-my-zsh/"/>
+      <url>/2025/03/19/record/Ubuntu+zsh+oh-my-zsh/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><h3 id="更新下apt"><a href="#更新下apt" class="headerlink" title="更新下apt"></a>更新下apt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br></pre></td></tr></table></figure><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure><h3 id="设置为默认shell"><a href="#设置为默认shell" class="headerlink" title="设置为默认shell"></a>设置为默认shell</h3><h3 id="先看看zsh在哪"><a href="#先看看zsh在哪" class="headerlink" title="先看看zsh在哪"></a>先看看zsh在哪</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> zsh</span><br></pre></td></tr></table></figure><h3 id="再根据路径设置-下面是默认的"><a href="#再根据路径设置-下面是默认的" class="headerlink" title="再根据路径设置(下面是默认的)"></a>再根据路径设置(下面是默认的)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /usr/bin/zsh</span><br></pre></td></tr></table></figure><h2 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装oh-my-zsh</h2><h3 id="进入官网找到官方的命令"><a href="#进入官网找到官方的命令" class="headerlink" title="进入官网找到官方的命令:"></a>进入<a href="https://ohmyz.sh/">官网</a>找到官方的命令:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure><p>但是官网的脚本地址是github上的，由于某些原因，有时在国内是无法访问的，所有可以把链接换成<code>https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh</code><br>即:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure><h3 id="替换源"><a href="#替换源" class="headerlink" title="替换源"></a>替换源</h3><p>找到这段内容，并替换为下面这个样子</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Default settings</span></span><br><span class="line">REPO=<span class="variable">$&#123;REPO:-mirrors/ohmyzsh&#125;</span></span><br><span class="line">REMOTE=<span class="variable">$&#123;REMOTE:-https://gitee.com/<span class="variable">$&#123;REPO&#125;</span>.git&#125;</span></span><br><span class="line">BRANCH=<span class="variable">$&#123;BRANCH:-master&#125;</span></span><br></pre></td></tr></table></figure><h3 id="执行安装脚本"><a href="#执行安装脚本" class="headerlink" title="执行安装脚本"></a>执行安装脚本</h3><p>执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh install.sh</span><br></pre></td></tr></table></figure><p>完毕后将看到oh-my-zsh的界面</p><h2 id="为ROOT用户安装"><a href="#为ROOT用户安装" class="headerlink" title="为ROOT用户安装"></a>为ROOT用户安装</h2><p>因为zsh已经安装过，所有只需要在root用户下再次修改默认shell即可:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /usr/bin/zsh</span><br></pre></td></tr></table></figure><h2 id="然后再次将oh-my-posh的配置文件复制到root用户下即可"><a href="#然后再次将oh-my-posh的配置文件复制到root用户下即可" class="headerlink" title="然后再次将oh-my-posh的配置文件复制到root用户下即可"></a>然后再次将oh-my-posh的配置文件复制到root用户下即可</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/user/.zshrc /root/.zshrc</span><br><span class="line"><span class="built_in">cp</span> -r /home/user/.oh-my-zsh /root/</span><br></pre></td></tr></table></figure><p>现在root下也可以用oh-my-zsh了，但是设置不是同步的，所有在普通用户下安装的插件什么的也要在root用户下再配置一次。</p><h2 id="安装zsh-syntax-highlighting插件"><a href="#安装zsh-syntax-highlighting插件" class="headerlink" title="安装zsh-syntax-highlighting插件"></a>安装zsh-syntax-highlighting插件</h2><p>克隆项目到一个目录中，这里用.zsh_extensions</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh_extensions/zsh-autosuggestions</span><br></pre></td></tr></table></figure><p>然后将以下命令放到.zshrc里，这样每次打开zsh都会自动加载插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zsh_extensions/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Terminal </tag>
+            
+            <tag> 终端 </tag>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> 美化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mpv_lazy+Anime4K配置</title>
       <link href="/2025/03/03/record/mpv_lazy+Anime4K/"/>
       <url>/2025/03/03/record/mpv_lazy+Anime4K/</url>
@@ -51,9 +84,9 @@
       
         <tags>
             
-            <tag> 终端 </tag>
-            
             <tag> Terminal </tag>
+            
+            <tag> 终端 </tag>
             
             <tag> wezterm </tag>
             
@@ -113,13 +146,13 @@
       
         <tags>
             
-            <tag> oh-my-posh </tag>
-            
-            <tag> shell </tag>
-            
             <tag> 终端 </tag>
             
             <tag> 美化 </tag>
+            
+            <tag> oh-my-posh </tag>
+            
+            <tag> shell </tag>
             
         </tags>
       
